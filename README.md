@@ -15,11 +15,10 @@ These Docker containers are primarily developed to be used inside an online cour
 
 To keep every layer minimal, the tools needed for installing the different components are removed again after installation for as far as they're not needed for the functioning of the installed R toolset. This also means that you almost always need to tailor the provided containers to your own needs.
 
- - In order to install R packages, one needs to install the alpine packages `R-dev` and `R-doc`. This can be done using `apk` as explained in the [alpine linux wiki](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management)
+ - In order to install R packages, one needs to install the alpine packages `R-dev` and `R-doc`. This can be done using `apk` as explained in the [alpine linux wiki](https://wiki.alpinelinux.org/wiki/Alpine_Linux_package_management). The `alpine-r-core` image has the edge repos already added. So if you build on `alpine-r-core`, you need the following in the dockerfile:
  
  ```
- apk update
- apk add R-dev R-doc
+ RUN apk add R-dev@edge R-doc@edge --no-cache
  ```
 
  - To install packages with code that needs compiling, the extra alpine packages `libc-dev` and possibly `g++` are needed on top of `R-dev`. 
