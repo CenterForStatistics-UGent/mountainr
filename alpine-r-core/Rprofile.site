@@ -1,0 +1,14 @@
+## Set the mirror to RStudio cloud for optimal installation
+## This automatically selects the closest mirror
+local({ r <- getOption("repos")
+		r["CRAN"] <- "https://cloud.r-project.org"
+		options(repos = r)
+})
+
+## set the default help type to text. The installation on alpine
+## currently doesn't copy the necessary css at installation 
+## to display html correctly. 
+options(help_type="text")
+
+# set a site library
+# .Library.site <- file.path(chartr("\\", "/", R.home()), "site-library")
