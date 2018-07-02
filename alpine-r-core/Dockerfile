@@ -14,7 +14,4 @@ RUN echo '@edge http://nl.alpinelinux.org/alpine/edge/community' >> /etc/apk/rep
 
 RUN ["apk", "add", "R@edge"]
 
-## The Rprofile.site file sets the CRAN mirror to cloud.r-project.org
-COPY Rprofile.site /usr/lib/R/etc/Rprofile.site
-
 CMD ["R"]
